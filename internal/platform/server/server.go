@@ -5,18 +5,21 @@ import (
     "log"
     "my-hexagonal-api/internal/platform/server/handler/health"
     "github.com/gin-gonic/gin"
+    "database/sql"
 )
 
 type Server struct {
     engine   *gin.Engine
     httpAddr string
+    db *sql.DB
 }
 
-func New(host, port string) *Server {
+func New(host, port string, db *sql.DB) *Server {
     engine := gin.Default()
     srv := &Server{
         engine:   engine,
         httpAddr: fmt.Sprintf("%s:%s", host, port),
+        db: db,
     }
     srv.registerRoutes()
     return srv

@@ -1,7 +1,8 @@
 package user
 
 import (
-    "my-hexagonal-api/internal/platform/database"
+	"database/sql"
+	"my-hexagonal-api/internal/platform/database"
 )
 
 type UserService struct {
